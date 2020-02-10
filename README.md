@@ -20,13 +20,16 @@ All of the results will be written to an output file named by the filename from 
 1. Read in the command line arguments as specified above. The first command line argument should look like this:
 chimps.fasta,human.fasta for filenames and NG_046857.1,NG_390429.2 .There should be no space in between and the file name should follow the convention of filename.fasta.
 
-2. The above result is then parsed by comma. 
+2. The input filenames must end with either .fasta or .fsa to indicate that they are fasta files. 
 
-3. According to different taxid in argument 2, different databases are chosen for the blasting the query. The names of the databases are  different blast argument will be produced. The result of using blast should contain query sequence ID, E-value, Percent positive mathes, and query sequence alignment. 
+3. The above result is then parsed by comma. 
 
-4. The blast query is built from the instructions on NCBI's website. 
+3. According to different taxid in argument 2, different databases are chosen for the blasting the query. The names of the databases are  humangenomedatabase, ecolidatabase, and wuhansequencedatabase.  
 
-5. All the queries are blast against the locally created databases that contain the corresponding sequences of human, ecoli, and wuhan virus. 
+4. According to the input, different approaches will be conducted to get the fasta files. If input is a list of refseq IDs, a NCBI api will be used to acquire the corresponding fasta files. The contents of these fasta files will be concated to an input file for blasting. 
+If the input is a list of filenames, then the file will be blast against the database directly. 
+
+5. The result of using blast should contain query sequence ID, E-value, Percent positive mathes, and query sequence alignment.
 
 6. All the result is written to the output file. 
 
